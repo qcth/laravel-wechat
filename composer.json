@@ -1,0 +1,28 @@
+{
+    "name": "qcth/laravel-wechat",
+    "description": "this is weixin plug-in",
+    "authors": [
+        {
+            "name": "qcth",
+            "email": "qcth@foxmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "license": "MIT",
+    "require": {},
+    "autoload": {
+        "psr-4":{
+            "Qcth\\Wechat\\":"src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Qcth\\Wechat\\Provider\\WechatServiceProvider"
+            ],
+            "aliases": {
+                "Wechat": "Qcth\\Wechat\\Facade\\Wechat"
+            }
+        }
+    }
+}
