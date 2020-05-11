@@ -1,11 +1,11 @@
 <?php
 
-namespace qcth\Wechat\Traits;
+namespace Qcth\Wechat\Traits;
 
 
 /**
  * Trait CurlTrait 模拟post或get请求
- * 
+ *
  */
 trait CurlTrait {
 
@@ -43,9 +43,9 @@ trait CurlTrait {
         return $data;
 
     }
-	
-	
-	/**
+
+
+    /**
      * 发送请求 证书请求
      *
      * @param       $url
@@ -56,7 +56,7 @@ trait CurlTrait {
      * @return bool|mixed
      */
     function curl_post_ssl($url, $vars,$pem=[], $second = 30, $aHeader = []){
-    
+
         $ch = curl_init();
         //超时时间
         curl_setopt($ch, CURLOPT_TIMEOUT, $second);
@@ -86,5 +86,5 @@ trait CurlTrait {
             return false;
         }
     }
-	
+
 }

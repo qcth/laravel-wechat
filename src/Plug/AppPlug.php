@@ -3,8 +3,6 @@
 
 namespace Qcth\Wechat\Plug;
 
-
-
 use Qcth\Wechat\Traits\CurlTrait;
 use Qcth\Wechat\Traits\TokenTrait;
 
@@ -16,9 +14,7 @@ use Qcth\Wechat\Traits\TokenTrait;
 class AppPlug extends Common {
     use TokenTrait,CurlTrait;
 
-
     //申请使用插件接口, 此接口用于小程序向插件开发者发起使用插件的申请。
-
     public function add_plug($plugin_appid){
         $url="https://api.weixin.qq.com/wxa/plugin?access_token={$this->authorizer_access_token()}";
 

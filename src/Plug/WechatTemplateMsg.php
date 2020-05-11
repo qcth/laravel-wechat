@@ -2,7 +2,6 @@
 
 namespace Qcth\Wechat\Plug;
 
-
 use Qcth\Wechat\Traits\CurlTrait;
 use Qcth\Wechat\Traits\TokenTrait;
 
@@ -77,7 +76,7 @@ class WechatTemplateMsg extends Common {
     }
 
     //发送模板消息
-	public function send_template_msg($data){
+    public function send_template_msg($data){
         $url="https://api.weixin.qq.com/cgi-bin/message/template/send?access_token={$this->authorizer_access_token()}";
 
         $result_data=$this->curl($url,json_encode($data));
@@ -85,5 +84,5 @@ class WechatTemplateMsg extends Common {
         return json_decode($result_data,true);
 
     }
-	
+
 }

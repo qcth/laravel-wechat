@@ -1,12 +1,15 @@
 <?php
 
-namespace qcth\Wechat\Traits;
+namespace Qcth\Wechat\Traits;
 
+use App\Model\SmallAuthorizerConfig;
+use App\Model\WechatAuthorizerConfig;
+use Carbon\Carbon;
 
 /**
  * 获取第三方平台, access_token 或 公众平台或小程序的 access_token
  * Trait TokenTrait
- * 
+ *
  */
 trait TokenTrait {
 
@@ -15,8 +18,7 @@ trait TokenTrait {
     protected function component_access_token(){
 
         //判断令牌是否过期
-
-        if($this->config['component']['component_access_token_end_time']>time()){
+        if(Carbon::parse($this->config['component']['component_access_token_end_time'])->gt(Carbon::now())){
             return $this->config['component']['component_access_token'];
         }
 
@@ -39,8 +41,11 @@ trait TokenTrait {
         }
 
         //更新到数据中
-        $update=array('component_access_token'=>$return_data['component_access_token'],'component_access_token_end_time'=>time()+$return_data['expires_in']-500);
-        M('weixin_open_component_config')->where(array('type'=>3))->setField($update);
+
+        $this->config['component']->component_access_token=$return_data['component_access_token'];
+        $this->config['component']->component_access_token_end_time=Carbon::now()->addSecond($return_data['expires_in']-500);
+
+        $this->config['component']->save();
 
         return $return_data['component_access_token'];
     }
@@ -48,8 +53,8 @@ trait TokenTrait {
     protected function authorizer_access_token(){
 
         //判断component_access_token 令牌 是否过期
-        if($this->config['component']['authorizer_access_token_end_time']>time()){
-            return $this->config['component']['authorizer_access_token'];
+        if(Carbon::parse($this->config[$this->type_name]['authorizer_access_token_end_time'])->gt(Carbon::now())){
+            return $this->config[$this->type_name]['authorizer_access_token'];
         }
 
         //刷新 authorizer_access_token
@@ -64,11 +69,12 @@ trait TokenTrait {
         if(empty($result_data['authorizer_access_token'])||empty($result_data['authorizer_refresh_token'])){
             return false;
         }
-        $update_data['authorizer_access_token']=$result_data['authorizer_access_token'];
-        $update_data['authorizer_refresh_token']=$result_data['authorizer_refresh_token'];
-        $update_data['authorizer_access_token_end_time']=time()+$result_data['expires_in']-500;
 
-        M('weixin_open_authorizer_'.$this->type_name.'_config')->where(array('authorizer_appid'=>$this->config[$this->type_name]['authorizer_appid']))->save($update_data);
+        //更新数据库
+        $this->config[$this->type_name]->authorizer_access_token=$result_data['authorizer_access_token'];
+        $this->config[$this->type_name]->authorizer_refresh_token=$result_data['authorizer_refresh_token'];
+        $this->config[$this->type_name]->authorizer_access_token_end_time=Carbon::now()->addSecond($result_data['expires_in']-500);
+        $this->config[$this->type_name]->save();
 
         //返出刷新后的商家令牌
         return $result_data['authorizer_access_token'];
@@ -76,3 +82,4 @@ trait TokenTrait {
 
 
 }
+

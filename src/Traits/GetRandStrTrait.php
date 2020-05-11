@@ -1,6 +1,6 @@
 <?php
 
-namespace qcth\Wechat\Traits;
+namespace Qcth\Wechat\Traits;
 
 
 /**

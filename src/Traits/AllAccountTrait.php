@@ -1,7 +1,6 @@
 <?php
 
-namespace qcth\Wechat\Traits;
-
+namespace Qcth\Wechat\Traits;
 
 /**
  * 拉取已授权的部分账号或所有账号

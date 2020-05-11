@@ -3,7 +3,6 @@
 
 namespace Qcth\Wechat\Plug;
 
-
 use Qcth\Wechat\Traits\CurlTrait;
 use Qcth\Wechat\Traits\TokenTrait;
 

@@ -2,7 +2,6 @@
 
 namespace Qcth\Wechat\Plug;
 
-
 /**
  * Class Encrypt 解密
  * @package qcth\laravel_open\plug
@@ -19,14 +18,13 @@ class Decrypt extends Common {
     public function decrypt_xml($post_data=null,$url_param=null){
 
         //微信post提交到第三方平台的数据,不能为空
-        if(is_null($post_data)){
+        if(empty($post_data)){
             return false;
         }
         //微信请求第三方地址是,携带的get参数,不能为空
-        if(is_null($url_param)){
+        if(empty($url_param)){
             return false;
         }
-
 
         //-----------------配置参数  start--------------------------
         $encodingaeskey=$this->config['component']['msg_key'];

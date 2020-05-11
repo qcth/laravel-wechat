@@ -2,8 +2,6 @@
 
 namespace Qcth\Wechat\Plug;
 
-
-
 use Qcth\Wechat\Traits\CurlTrait;
 use Qcth\Wechat\Traits\TokenTrait;
 
@@ -62,7 +60,7 @@ class AppTemplateMsg extends Common {
         echo  json_encode($content);
     }
 
-	//获取小程序模板库标题列表
+    //获取小程序模板库标题列表
     public function get_template_lib($offset=0,$count=20){
         $url="https://api.weixin.qq.com/cgi-bin/wxopen/template/library/list?access_token={$this->authorizer_access_token()}";
 
@@ -100,8 +98,8 @@ class AppTemplateMsg extends Common {
         return json_decode($result_data,true);
 
     }
-	
-	//获取帐号下已存在的模板列表
+
+    //获取帐号下已存在的模板列表
 
     public function get_are_template($offset=0,$count=20){
         $url="https://api.weixin.qq.com/cgi-bin/wxopen/template/list?access_token={$this->authorizer_access_token()}";

@@ -1,11 +1,10 @@
 <?php
 
-namespace qcth\Wechat\Traits;
-
+namespace Qcth\Wechat\Traits;
 
 /**
  * Trait CurlTrait 数组转xml 或 xml转数组
- * 
+ *
  */
 trait XmlTrait {
 

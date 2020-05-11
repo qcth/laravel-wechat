@@ -1,9 +1,6 @@
 <?php
 
-
 namespace Qcth\Wechat\Plug;
-
-
 
 use Qcth\Wechat\Traits\CurlTrait;
 use Qcth\Wechat\Traits\TokenTrait;
@@ -26,7 +23,7 @@ class AppDomain extends Common {
     //$post_data['wsrequestdomain']=['https://a.com',.......]
     //$post_data['uploaddomain']=['https://a.com',.......]
     //$post_data['downloaddomain']=['https://a.com',.......]
-	public function set_domain($post_data){
+    public function set_domain($post_data){
         $url="https://api.weixin.qq.com/wxa/modify_domain?access_token={$this->authorizer_access_token()}";
 
         $result_data=$this->curl($url,json_encode($post_data));

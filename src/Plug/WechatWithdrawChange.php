@@ -3,7 +3,6 @@
 
 namespace Qcth\Wechat\Plug;
 
-
 use Qcth\Wechat\Traits\CurlTrait;
 use Qcth\Wechat\Traits\GetRandStrTrait;
 use Qcth\Wechat\Traits\MakeSignTrait;
@@ -21,7 +20,7 @@ class WechatWithdrawChange extends Common {
 
     //提现
     public function send_money( $data,$openid,$price ,$desc) {
-    
+
         $data['mch_appid']= $this->config['weixin']['authorizer_appid'];  //微信公众号appid
         $data['mchid']= $this->config['weixin']['mch_id'];  //微信支付分配的商户号
         $data['nonce_str'] =$this->get_rand_str( 16 );  //随机字符串，不长于32位

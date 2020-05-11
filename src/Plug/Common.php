@@ -18,14 +18,12 @@ class Common{
             //赋值配置项
             $this->config=$config;
         }
-
+        //设置标识
+        $this->set_type_name();
         //子类初始化
         if(method_exists($this,'_init')){
             $this->_init();
         }
-
-        //设置标识
-        $this->set_type_name();
     }
 
     //设置标识,,区分是小程序还是公众平台
@@ -44,6 +42,5 @@ class Common{
         }else{                    //小程序
             $this->type_name='small';
         }
-
     }
 }

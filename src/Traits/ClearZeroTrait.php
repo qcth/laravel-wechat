@@ -1,12 +1,11 @@
 <?php
 
-namespace qcth\Wechat\Traits;
-
+namespace Qcth\Wechat\Traits;
 
 /**
  * 接口调用次数清零
  * Trait ClearZeroTrait
- * 
+ *
  */
 trait ClearZeroTrait {
 

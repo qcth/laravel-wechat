@@ -3,8 +3,6 @@
 
 namespace Qcth\Wechat\Plug;
 
-
-
 use Qcth\Wechat\Traits\CurlTrait;
 use Qcth\Wechat\Traits\TokenTrait;
 
@@ -27,7 +25,7 @@ class AppQr extends Common {
 
         $result_data=$this->curl($url,json_encode($post_data));
 
-       return file_put_contents($path,$result_data);
+        return file_put_contents($path,$result_data);
 
     }
 

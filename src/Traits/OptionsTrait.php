@@ -1,7 +1,6 @@
 <?php
 
-namespace qcth\Wechat\Traits;
-
+namespace Qcth\Wechat\Traits;
 
 /**
  * 设置或获取 公众号或小程序的 选项设置

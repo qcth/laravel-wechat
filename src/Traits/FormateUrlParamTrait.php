@@ -1,12 +1,12 @@
 <?php
 
-namespace qcth\Wechat\Traits;
+namespace Qcth\Wechat\Traits;
 
 
 /**
  * 把数组格式成url参数
  * Trait FormateUrlParamTicketTrait
- * 
+ *
  */
 trait FormateUrlParamTrait {
 

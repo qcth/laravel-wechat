@@ -3,8 +3,6 @@
 
 namespace Qcth\Wechat\Plug;
 
-
-
 use Qcth\Wechat\Traits\CurlTrait;
 use Qcth\Wechat\Traits\TokenTrait;
 
@@ -15,7 +13,7 @@ use Qcth\Wechat\Traits\TokenTrait;
  */
 class AppPrivacy extends Common {
     use TokenTrait,CurlTrait;
-    
+
 
     //设置小程序隐私设置（是否可被搜索）
     public function set_search($status=1){
